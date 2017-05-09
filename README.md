@@ -3,15 +3,24 @@ A note for developing Android Apps
 
 ---
 ### **Use vector drawables on older platforms (< 21)**
+  To use vector drawables, add this to app.gradle.
+
+```gradle
+android {
+   defaultConfig {
+     vectorDrawables.useSupportLibrary = true
+    }
+ }
+```
 
 1. In older paltforms, the `Resources$NotFoundException` error will show up while getting the vector drawables.
    
    Do the following steps to fix this.
-   - Call this line in Activity before getting the drawables,
+    - Call this line in Activity before getting the drawables,
     ```Java
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     ```
-   - then call one of these lines to get drawables.
+    - then call one of these lines to get drawables.
     ```java
     android.support.v4.content.ContextCompat.getDrawable(Context context, @DrawableRes int id);
     ```
@@ -21,6 +30,7 @@ A note for developing Android Apps
     ```
     
 2. Use VectorDrawableCompat to get vector graphics.
+
     ```java
     android.support.graphics.drawable.VectorDrawableCompat.create(@NonNull Resources res,
         @DrawableRes int resId, @Nullable Theme theme);
