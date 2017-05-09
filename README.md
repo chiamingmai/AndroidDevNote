@@ -29,21 +29,22 @@ A note for developing Android Apps
 ### **Change vector drawable's color**
 
 1. In xml:
-    - Create color selector in `res/color` directory.
+    - Create color selector (state_selector.xml) in `res/color` directory.
     ```xml
       <selector xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:color="@color/itemSelected" android:state_selected="true" />
         <item android:color="@color/itemUnselected" android:state_selected="false" />
       </selector>
     ```
-    - Use this selector in vector drawable.
+    - add "state_selector" to "android:tint" attribute in vector drawable.
     ```xml
     <vector xmlns:android="http://schemas.android.com/apk/res/android"
         android:width="24dp"
         android:height="24dp"
         android:viewportWidth="24.0"
         android:viewportHeight="24.0"
-        android:tint="@color/tab_item_state" >
+        android:tint="@color/state_selector" > /*use selector in this line*/
+        
             <path
             android:fillColor="#FF000000"
             android:pathData="M19,3h-4.18....." />
